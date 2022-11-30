@@ -1,0 +1,6 @@
+
+entity Trip {
+	destination String,
+    minTravelersNumber Integer,
+    maxTravelersNumber Integer
+}
