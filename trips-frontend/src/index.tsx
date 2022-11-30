@@ -1,18 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import CssBaseline from '@mui/material/CssBaseline';
 import reportWebVitals from './reportWebVitals';
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {Layout} from "./routes/Layout/Layout";
+import {TripsList} from "./routes/TripsList/TripsList";
+import {CreateTrip} from "./routes/CreateTrip/CreateTrip";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <CssBaseline enableColorScheme/>
-    <App />
-  </React.StrictMode>
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Layout />,
+        children: [
+            {
+                path: "trips",
+                element: <TripsList />,
+            },
+            {
+                path: "create",
+                element: <CreateTrip />,
+            },
+        ],
+    },
+]);
+
+const rootElement = document.getElementById('root');
+
+ReactDOM.createRoot(rootElement!).render(
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
