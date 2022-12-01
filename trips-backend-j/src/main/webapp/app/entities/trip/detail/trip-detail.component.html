@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="trip">
+      <h2 data-cy="tripDetailsHeading"><span>Trip</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ trip.id }}</span>
+        </dd>
+        <dt><span>Destination</span></dt>
+        <dd>
+          <span>{{ trip.destination }}</span>
+        </dd>
+        <dt><span>Min Travelers Number</span></dt>
+        <dd>
+          <span>{{ trip.minTravelersNumber }}</span>
+        </dd>
+        <dt><span>Max Travelers Number</span></dt>
+        <dd>
+          <span>{{ trip.maxTravelersNumber }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/trip', trip.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20221130174334",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "trip",
+  "fields": [
+    {
+      "fieldName": "destination",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "minTravelersNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "maxTravelersNumber",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Trip",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}
