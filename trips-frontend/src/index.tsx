@@ -6,6 +6,8 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Layout} from "./routes/Layout/Layout";
 import {TripsList} from "./routes/TripsList/TripsList";
 import {CreateTrip} from "./routes/CreateTrip/CreateTrip";
+import {QueryClient, QueryClientProvider} from 'react-query';
+import {ReactQueryDevtools} from "react-query/devtools";
 
 const router = createBrowserRouter([
     {
@@ -24,11 +26,17 @@ const router = createBrowserRouter([
     },
 ]);
 
+// Create a client
+const queryClient = new QueryClient()
+
 const rootElement = document.getElementById('root');
 
 ReactDOM.createRoot(rootElement!).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <QueryClientProvider client={queryClient}>
+            <ReactQueryDevtools initialIsOpen={false} />
+            <RouterProvider router={router} />
+        </QueryClientProvider>
     </React.StrictMode>
 );
 
