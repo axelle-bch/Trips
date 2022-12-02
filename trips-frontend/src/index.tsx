@@ -8,6 +8,7 @@ import {TripsList} from "./routes/TripsList/TripsList";
 import {CreateTrip} from "./routes/CreateTrip/CreateTrip";
 import {QueryClient, QueryClientProvider} from 'react-query';
 import {ReactQueryDevtools} from "react-query/devtools";
+import {createTheme, ThemeProvider} from "@mui/material";
 
 const router = createBrowserRouter([
     {
@@ -26,17 +27,24 @@ const router = createBrowserRouter([
     },
 ]);
 
-// Create a client
-const queryClient = new QueryClient()
+// Create a query client
+const queryClient = new QueryClient();
+
+// Configure Theme
+const theme = createTheme();
+theme.spacing(2); // `${8 * 2}px` = '16px'
+
 
 const rootElement = document.getElementById('root');
 
 ReactDOM.createRoot(rootElement!).render(
     <React.StrictMode>
-        <QueryClientProvider client={queryClient}>
-            <ReactQueryDevtools initialIsOpen={false} />
-            <RouterProvider router={router} />
-        </QueryClientProvider>
+        <ThemeProvider theme={theme}>
+            <QueryClientProvider client={queryClient}>
+                <ReactQueryDevtools initialIsOpen={false}/>
+                <RouterProvider router={router}/>
+            </QueryClientProvider>
+        </ThemeProvider>
     </React.StrictMode>
 );
 

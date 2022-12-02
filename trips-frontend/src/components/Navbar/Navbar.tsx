@@ -11,8 +11,7 @@ import {
     ListItem, ListItemIcon, ListItemText,
     Menu,
     MenuItem,
-    Switch,
-    Typography
+    Switch
 } from "@mui/material";
 import {AccountCircle} from "@mui/icons-material";
 import {mainNavbarItems} from "./navbarItems";

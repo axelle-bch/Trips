@@ -1,8 +1,7 @@
-import {Container, Grid, Typography} from "@mui/material";
-import {useQuery, useQueryClient} from "react-query";
-import apiClient from '../../http-common'
-import {useEffect, useState} from "react";
+import {CircularProgress, Container, Grid, Typography} from "@mui/material";
+import {useState} from "react";
 import {useGetAllTrips} from "../../api/hooks/useGetAllTrips";
+import {TripsCard} from "../../components/TripCard/TripCard";
 
 export const TripsList = () => {
 
@@ -12,31 +11,23 @@ export const TripsList = () => {
         return JSON.stringify(res, null, 2);
     };
 
-    const { data, isLoading: isLoadingData, refetch: getData} = useGetAllTrips();
+    const { data, isLoading: isLoadingTrips, refetch: getData} = useGetAllTrips();
 
     console.log({data});
 
     return <>
         <Typography variant={"h2"}>Trips List</Typography>
-        {data && (
-            <div className="alert alert-secondary mt-2" role="alert">
-                <pre>{JSON.stringify(data.data)}</pre>
-            </div>
-        )}
+        {isLoadingTrips
+            ? <CircularProgress />
+            : <Grid container spacing={2}>
+                {data.data.map((trip, index) => (
+                    <Grid item xs={4}>
+                        <TripsCard trip={trip} />
+                    </Grid>
+                ))}
+            </Grid>
+        }
     </>
 
-//     return <>
-//         <Container maxWidth="md">
-//             <h1>Trips List</h1>
-//             <Grid container>
-//                 {mockTripsData.map((trip, index) => (
-//                     <Grid item xs={3}>
-//                         <TripsCard trip={trip} />
-//                     </Grid>
-//                 ))}
-//             </Grid>
-//
-//         </Container>
-//     </>
 
 }
