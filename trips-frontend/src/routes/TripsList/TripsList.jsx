@@ -1,7 +1,8 @@
-import {CircularProgress, Container, Grid, Typography} from "@mui/material";
+import {Box, CircularProgress, Container, Grid, Typography} from "@mui/material";
 import {useState} from "react";
 import {useGetAllTrips} from "../../api/hooks/useGetAllTrips";
 import {TripsCard} from "../../components/TripCard/TripCard";
+import {TripsGrid} from "../../components/TripsGrid/TripsGrid";
 
 export const TripsList = () => {
 
@@ -16,17 +17,13 @@ export const TripsList = () => {
     console.log({data});
 
     return <>
-        <Typography variant={"h2"}>Trips List</Typography>
-        {isLoadingTrips
-            ? <CircularProgress />
-            : <Grid container spacing={2}>
-                {data.data.map((trip, index) => (
-                    <Grid item xs={4}>
-                        <TripsCard trip={trip} />
-                    </Grid>
-                ))}
-            </Grid>
-        }
+        <Typography variant={"h3"}>Trips List</Typography>
+
+            {isLoadingTrips
+                ? <CircularProgress />
+                : <TripsGrid trips={data.data}/>
+            }
+
     </>
 
 

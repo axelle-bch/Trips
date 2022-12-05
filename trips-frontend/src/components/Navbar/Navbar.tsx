@@ -50,7 +50,7 @@ const Navbar = () => {
                 />
             </FormGroup>
 
-            <AppBar position="static">
+            <AppBar position="static" >
                 <Toolbar>
                     <IconButton
                         size="large"

@@ -31,8 +31,8 @@ export const CreateTrip = () => {
 
     return (
         <>
-            <Typography variant={"h2"}>Create a trip</Typography>
-            <Paper>
+            <Typography variant={"h3"}>Create a trip</Typography>
+            <Box p={2}>
                 <form
                     onSubmit={handleSubmit}
                 >
@@ -78,7 +78,7 @@ export const CreateTrip = () => {
                         </LoadingButton>
                     </Box>
                 </form>
-            </Paper>
+            </Box>
 
         </>
     )

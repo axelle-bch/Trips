@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {Layout} from "./routes/Layout/Layout";
+import {Layout} from "./layout/Layout";
 import {TripsList} from "./routes/TripsList/TripsList";
 import {CreateTrip} from "./routes/CreateTrip/CreateTrip";
 import {QueryClient, QueryClientProvider} from 'react-query';
@@ -31,8 +31,13 @@ const router = createBrowserRouter([
 const queryClient = new QueryClient();
 
 // Configure Theme
-const theme = createTheme();
-theme.spacing(2); // `${8 * 2}px` = '16px'
+const theme = createTheme({
+    palette: {
+        mode: 'light',
+    },
+    spacing: 8
+});
+
 
 
 const rootElement = document.getElementById('root');

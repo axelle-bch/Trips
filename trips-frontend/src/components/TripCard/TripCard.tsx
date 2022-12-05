@@ -9,6 +9,7 @@ interface Props {
 export const TripsCard = (props: Props) => {
     // destructuring the object
     const {destination, minTravelersNumber, maxTravelersNumber} = props.trip;
+    const currentTravelersNumber =  Math.floor(Math.random() * maxTravelersNumber + 1);
 
     return <>
         <Card
@@ -16,7 +17,7 @@ export const TripsCard = (props: Props) => {
         >
             <CardHeader
                 title={destination}
-                subheader="Created on: Trip creation date here"
+                subheader="Destination country"
             />
             <CardMedia
                 component="img"
@@ -25,13 +26,25 @@ export const TripsCard = (props: Props) => {
                 alt="Paella dish"
             />
             <CardContent>
-                <Box sx={{ display: 'inline-flex' }}>
-                    <PersonIcon/>
-                    <Typography variant={"body1"}>{minTravelersNumber} to {maxTravelersNumber} travelers</Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Box sx={{ display: 'flex'}}>
+                        <PersonIcon/>
+                        <Typography variant={"body2"}>{minTravelersNumber} to {maxTravelersNumber} travelers</Typography>
+                    </Box>
+                    <Box>
+                        <Typography variant={"body2"}>(Currently {currentTravelersNumber}) </Typography>
+                    </Box>
                 </Box>
-                <Typography variant="body2" color="text.secondary">
-                    A short description of the trip here
-                </Typography>
+                <Box>
+                    <Typography variant="body2" color="text.secondary">
+                        Date of the trip here
+                    </Typography>
+                </Box>
+                <Box>
+                    <Typography variant="body2" color="text.secondary">
+                        A short description of the trip here
+                    </Typography>
+                </Box>
             </CardContent>
             <Button>Apply</Button>
         </Card>
